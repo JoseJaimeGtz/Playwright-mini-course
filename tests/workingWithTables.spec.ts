@@ -23,7 +23,7 @@ test('workingWithTables', async ({page}) => {
       capital: await row.locator('//td[3]').innerText(),
       currency: await row.locator('//td[4]').innerText(),
       // @ts-ignore // typescript no detecta el archivo de configuración que creé para que tome las funciones del ES2021 (replaceAll)
-      languages: (await row.locator('//td[5]').innerText()).replaceAll(' ', '').replace('\n', '').split(';')
+      languages: (await row.locator('//td[5]').innerText()) //.replaceAll(' ', '').replace('\n', '').split(';')
     }
     countries.push(country);
   }
