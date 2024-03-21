@@ -7,14 +7,14 @@ test('purchase an item 2', async ({page}) => {
     console.log(req.url());
   });
 
-  // await page.route(
-  //   'https://www.saucedemo.com/static/media/*.jpg',
-  //   (route) => route.abort()
-  // );
   await page.route(
-    '**/*.{jpg,png,jpge,svg,css}',
+    'https://www.saucedemo.com/static/media/*.jpg',
     (route) => route.abort()
   );
+  // await page.route(
+  //   '**/*.{jpg,png,jpge,svg,css}',
+  //   (route) => route.abort()
+  // );
 
   await page.goto(process.env.LOGIN_URL);
   const login = new LoginPage(page);
@@ -54,6 +54,5 @@ test('interceptor test', async ({page}) => {
     }
   );
   await page.goto('https://demoqa.com/books');
-  await page.pause();
   await page.screenshot({path:'./screenshots/books.png', fullPage:true});
 });
